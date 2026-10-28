@@ -24,5 +24,9 @@ Testing on image 55 (Person 5) demonstrates the impact of $k$:
 * **$k=3$:** Yields a very blurry image showing only basic head shape and major shadows without clear eyes or mouth details.
 * **$k=6$:** Produces a clearer, albeit ghost-like, image with more distinct lighting details, though still insufficient for exact identification.
 
+![Example](Results/k_Reconstruct.png)
+
 ### 4. Facial Recognition
 To identify a new, noisy test image, it is projected into the calculated $k$-dimensional sub-space. The system calculates the Euclidean distance between the test image's weights and the weights of the known training images. The system accurately matched heavily damaged test images to Person 15, Person 10, and Person 1 using a Rank-5 ($k=5$) approximation, which provided sufficient precision for identification.
+
+![Example](Results/Test_1.png)
