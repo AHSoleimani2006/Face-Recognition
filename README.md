@@ -25,4 +25,4 @@ Testing on image 55 (Person 5) demonstrates the impact of $k$:
 * **$k=6$:** Produces a clearer, albeit ghost-like, image with more distinct lighting details, though still insufficient for exact identification.
 
 ### 4. Facial Recognition
-To identify a new, noisy test image, it is projected into the calculated $k$-dimensional sub-space. The system calculates the Euclidean distance between the test image's weights and the weights of the known training images[cite: 10]. The system accurately matched heavily damaged test images to Person 15, Person 10, and Person 1 using a Rank-5 ($k=5$) approximation, which provided sufficient precision for identification[cite: 11].
+To identify a new, noisy test image, it is projected into the calculated $k$-dimensional sub-space. The system calculates the Euclidean distance between the test image's weights and the weights of the known training images. The system accurately matched heavily damaged test images to Person 15, Person 10, and Person 1 using a Rank-5 ($k=5$) approximation, which provided sufficient precision for identification.
