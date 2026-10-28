@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 import glob
+import os
 
 def compute_svd(A):
     """Calculate the mean vector, centers the matrix, and applies SVD."""
@@ -32,6 +33,10 @@ def reconstruct_face(person_idx, k_values, U, mean_vec, original_matrix, img_sha
         plt.axis('off')
 
     plt.tight_layout()
+
+    os.makedirs("Results", exist_ok=True)
+    plt.savefig("Results/k_Reconstruct.png")
+
     plt.show()
 
 def recognize_faces(k, U, mean_vec, A_centered, train_labels, A_original, image_shape, test_folder_path):
@@ -43,6 +48,8 @@ def recognize_faces(k, U, mean_vec, A_centered, train_labels, A_original, image_
     if not test_image_paths:
         print("No images found for recognition.")
         return
+
+    test_count = 1
 
     for test_path in test_image_paths:
         img = cv2.imread(test_path, cv2.IMREAD_GRAYSCALE)
@@ -65,11 +72,16 @@ def recognize_faces(k, U, mean_vec, A_centered, train_labels, A_original, image_
         plt.figure(figsize=(8, 4))
         plt.subplot(1, 2, 1)
         plt.imshow(img_resized, cmap='gray')
-        plt.title(f"Test Image\n({test_path.split(r'/')[-1]})")
+        plt.title(f"Test Image")
         plt.axis('off')
 
         plt.subplot(1, 2, 2)
         plt.imshow(matched_img_vec.reshape(image_shape), cmap='gray')
         plt.title(f"Identified: Person {predicted_label}\n(Dist: {min_distance:.2f})")
         plt.axis('off')
+
+        os.makedirs("Results", exist_ok=True)
+        plt.savefig(f"Results/Test_{test_count}.png")
+        test_count += 1
+
         plt.show()
